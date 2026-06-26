@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ml-yellow: #FFE600;
+  --ml-blue: #3483FA;
+  --ml-dark: #1A1A2E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F5F5F5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn-ml-yellow {
+  @apply bg-ml-yellow text-ml-dark font-bold py-4 px-6 rounded-xl hover:bg-ml-yellow-dark active:scale-95 transition-all duration-150 shadow-md;
+}
+
+.btn-ml-blue {
+  @apply bg-ml-blue text-white font-bold py-4 px-6 rounded-xl hover:bg-ml-blue-dark active:scale-95 transition-all duration-150 shadow-md;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-sm p-5;
+}
+
+.kpi-card {
+  @apply bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-1;
+}
+
+.select-option {
+  @apply border-2 border-gray-200 rounded-xl p-4 text-center font-semibold cursor-pointer transition-all duration-150 hover:border-ml-blue hover:bg-blue-50 select-none active:scale-95;
+}
+
+.select-option.selected {
+  @apply border-ml-blue bg-blue-50 text-ml-blue;
+}
+
+.select-option.selected-yellow {
+  @apply border-yellow-400 bg-yellow-50 text-yellow-700 border-2;
+}
