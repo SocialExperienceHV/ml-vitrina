@@ -7,8 +7,6 @@ const links = [
   { href: '/ingreso', label: 'Ingreso', icon: '🚪' },
   { href: '/actividad1', label: 'Act. 1', icon: '⚽' },
   { href: '/actividad2', label: 'Act. 2', icon: '🌟' },
-  { href: '/bonos', label: 'Bonos', icon: '🎟️' },
-  { href: '/dashboard', label: 'Dashboard', icon: '📊' },
 ]
 
 export default function NavBar() {

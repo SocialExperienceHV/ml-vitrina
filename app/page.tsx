@@ -51,27 +51,6 @@ export default function Home() {
           </div>
         </Link>
 
-        <Link href="/bonos" className="block mt-2">
-          <div className="bg-white/10 text-white font-bold rounded-2xl p-6 flex items-center gap-4 shadow-lg active:scale-95 transition-transform border border-white/20">
-            <div className="text-3xl">🎟️</div>
-            <div>
-              <div className="text-lg font-black">Bonos</div>
-              <div className="text-sm font-medium text-white/60">Feed en tiempo real</div>
-            </div>
-            <div className="ml-auto text-2xl text-white/40">›</div>
-          </div>
-        </Link>
-
-        <Link href="/dashboard" className="block">
-          <div className="bg-ml-blue text-white font-bold rounded-2xl p-6 flex items-center gap-4 shadow-lg active:scale-95 transition-transform">
-            <div className="text-3xl">📊</div>
-            <div>
-              <div className="text-lg font-black">Dashboard General</div>
-              <div className="text-sm font-medium text-white/70">Ver estadísticas consolidadas</div>
-            </div>
-            <div className="ml-auto text-2xl">›</div>
-          </div>
-        </Link>
       </div>
 
       <div className="text-center pb-8 pt-2 flex flex-col items-center gap-2">
