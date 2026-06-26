@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
-import PageHeader from '@/components/PageHeader'
+import Link from 'next/link'
+import Image from 'next/image'
 import NavBar from '@/components/NavBar'
 import { supabase, RANGOS_EDAD, getNow } from '@/lib/supabase'
 
@@ -25,10 +26,7 @@ export default function IngresoPage() {
       fecha, dia, hora, genero, rango_edad: rangoEdad,
     })
     setLoading(false)
-    if (err) {
-      setError('Error al registrar. Intenta de nuevo.')
-      return
-    }
+    if (err) { setError('Error al registrar. Intenta de nuevo.'); return }
     setSuccess(true)
     setGenero('')
     setRangoEdad('')
@@ -36,41 +34,50 @@ export default function IngresoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-ml-gray pb-24">
-      <PageHeader
-        title="Registrar Ingreso"
-        subtitle="Selecciona género y edad del asistente"
-        accent="yellow"
-      />
+    <div className="min-h-screen bg-[#F5F5F5] flex flex-col pb-16">
 
-      <div className="px-4 py-6 max-w-md mx-auto space-y-6">
+      {/* Header compacto */}
+      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between">
+        <Link href="/" className="text-[#1A1A2E]/50 text-sm font-medium">‹ Inicio</Link>
+        <Image src="/logo-ml.png" alt="Mercado Libre" width={100} height={26} className="object-contain" />
+      </div>
+
+      <div className="px-4 pt-3 pb-2 max-w-md mx-auto w-full">
+        <h1 className="text-lg font-black text-[#1A1A2E]">Registrar Ingreso</h1>
+      </div>
+
+      <div className="px-4 max-w-md mx-auto w-full flex flex-col gap-3 flex-1">
 
         {/* Género */}
-        <div className="card">
-          <h2 className="font-bold text-ml-dark mb-4 text-base">Género</h2>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <h2 className="font-bold text-[#1A1A2E] mb-3 text-sm">Género</h2>
           <div className="grid grid-cols-2 gap-3">
             {GENEROS.map((g) => (
               <button
                 key={g}
                 onClick={() => setGenero(g)}
-                className={`select-option text-lg py-6 ${genero === g ? 'selected' : ''}`}
+                className={`rounded-xl border-2 py-4 text-center font-bold transition-all active:scale-95 ${
+                  genero === g ? 'border-[#3483FA] bg-blue-50 text-[#3483FA]' : 'border-gray-200 bg-white text-gray-700'
+                }`}
               >
                 <div className="text-2xl mb-1">{g === 'Hombre' ? '👨' : '👩'}</div>
-                {g}
+                <div className="text-sm">{g}</div>
               </button>
             ))}
           </div>
         </div>
 
         {/* Rango de edad */}
-        <div className="card">
-          <h2 className="font-bold text-ml-dark mb-4 text-base">Rango de edad</h2>
-          <div className="flex flex-col gap-2">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <h2 className="font-bold text-[#1A1A2E] mb-3 text-sm">Rango de edad</h2>
+          <div className="grid grid-cols-2 gap-2">
             {RANGOS_EDAD.map((r) => (
               <button
                 key={r}
                 onClick={() => setRangoEdad(r)}
-                className={`select-option text-left px-4 py-4 ${rangoEdad === r ? 'selected' : ''}`}
+                className={`rounded-xl border-2 px-3 py-3 text-center text-sm font-semibold transition-all active:scale-95 ${
+                  rangoEdad === r ? 'border-[#3483FA] bg-blue-50 text-[#3483FA]' : 'border-gray-200 bg-white text-gray-700'
+                }`}
               >
                 {r}
               </button>
@@ -85,7 +92,7 @@ export default function IngresoPage() {
         )}
 
         {success && (
-          <div className="bg-green-50 border border-green-300 text-green-700 rounded-xl p-4 text-center font-semibold animate-pulse">
+          <div className="bg-green-50 border border-green-300 text-green-700 rounded-xl p-3 text-center font-semibold text-sm animate-pulse">
             ✅ Ingreso registrado correctamente
           </div>
         )}
@@ -93,7 +100,7 @@ export default function IngresoPage() {
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full btn-ml-yellow text-lg py-5 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-[#FFE600] text-[#1A1A2E] font-black py-4 rounded-2xl text-base active:scale-95 transition-all disabled:opacity-50 shadow-sm"
         >
           {loading ? 'Registrando…' : 'Registrar ingreso'}
         </button>
